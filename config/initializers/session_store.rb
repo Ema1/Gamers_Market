@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-GamesExchange::Application.config.session_store :cookie_store, key: '_games_exchange_session'
+GamersMarket::Application.config.session_store :cookie_store, key: '_games_exchange_session'

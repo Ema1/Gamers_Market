@@ -24,4 +24,4 @@ def secure_token
   end
 end
 
-GamesExchange::Application.config.secret_key_base = secure_token
+GamersMarket::Application.config.secret_key_base = secure_token
