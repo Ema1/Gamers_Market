@@ -1,0 +1,41 @@
+Eric Ma
+2/24/2014
+
+  - Worked on Chapter 5 pages
+  - Pushed Bootstrap to github
+  - Fixed about us page layout
+  - Worked on general formatting of each page
+  - Created routes for each static page for chapter 5
+
+3/2/2014
+  
+  - Worked on Sign Up and Display pages for Chapter 7
+  - Worked on Css files for Chapter 7
+
+3/18/2014
+
+  - Completed Chapter 8 Work
+  - Completed Chapter 9 Work
+
+3/25/2014
+
+  - Completed Chapter 10 Work
+  - Fixed up Route.rb file
+
+3/27/2014
+
+  - Reworked Site starting from chapter 8
+
+3/29/2014
+  
+  - Completed chapter 9 and uploaded to heroku
+
+3/30/2014
+
+  - Completed chapter 10 and uploaded to heroku
+  - started fixing various issues in heroku site relating to missing files and mispelled files
+
+3/31/2014
+  
+  - Finished Fixes to heroku, Full site is working
+
