@@ -1,0 +1,11 @@
+<li>
+  <span class="content"><%= gamepost.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(gamepost.created_at) %> ago.
+  </span>
+  <% if current_user?(gamepost.user) %>
+    <%= link_to "delete", gamepost, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: gamepost.content %>
+  <% end %>
+</li>

@@ -1,4 +1,4 @@
-class GamesController < ApplicationController
+class GamepostsController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
@@ -7,8 +7,8 @@ class GamesController < ApplicationController
   end
   
   def create
-    @game = current_user.game.build(game_params)
-    if @game.save
+    @gamepost = current_user.gameposts.build(gamepost_params)
+    if @gamepost.save
       flash[:success] = "Game Sale created!"
       redirect_to root_url
     else
@@ -24,7 +24,7 @@ class GamesController < ApplicationController
 
   private
 
-    def game_params
+    def gamepost_params
       params.require(:game).permit(:content)
     end
 	    

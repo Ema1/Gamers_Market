@@ -1,10 +1,12 @@
 GamersMarket::Application.routes.draw do
-  resources :games
-
   resources :users
   resources :sessions,   only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
-
+  resources :gameposts, only: [:create, :destroy]
+  resources :games
+  resources :subscriptions
+  resources :plans
+  
   root  'static_pages#home'
   
   match '/signup',  to: 'users#new',            via: 'get'
@@ -14,7 +16,7 @@ GamersMarket::Application.routes.draw do
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
-  match '/games',   to: 'games#index',          via: 'get'
+  match '/plans',   to: 'plans#index',         via: 'get'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
+  has_many :gameposts, dependent: :destroy
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   validates :username, presence: true, length: { maximum: 50 }
@@ -23,6 +24,10 @@ class User < ActiveRecord::Base
   def feed
     # This is preliminary. See "Following users" for the full implementation.
     Micropost.where("user_id = ?", id)
+  end
+  
+  def gamefeed
+	gamepost.where("user_id = ?", id)
   end
   
  private

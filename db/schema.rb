@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401001051) do
+ActiveRecord::Schema.define(version: 20140407235357) do
+
+  create_table "game", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "game", ["user_id", "created_at"], name: "index_game_on_user_id_and_created_at"
+
+  create_table "gameposts", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gameposts", ["user_id", "created_at"], name: "index_gameposts_on_user_id_and_created_at"
 
   create_table "games", force: true do |t|
     t.string   "game"
@@ -29,6 +47,22 @@ ActiveRecord::Schema.define(version: 20140401001051) do
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+
+  create_table "plans", force: true do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.integer  "kisses"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "plan_id"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "stripe_customer_token"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"
