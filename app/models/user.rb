@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
  
-  
+
  
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -27,12 +27,13 @@ class User < ActiveRecord::Base
   end
   
   def gamefeed
-	gamepost.where("user_id = ?", id)
+	Gamepost.where("user_id = ?", id)
   end
   
  private
     def create_remember_token
       self.remember_token = User.hash(User.new_remember_token)
     end
+	
   
 end

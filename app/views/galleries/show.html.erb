@@ -1,0 +1,22 @@
+
+<% provide(:title, @gallery.name) %>
+
+<div id="gamepics">
+  <% for gamepic in @gallery.gamepics %>
+    <div class="gamepic">
+      <%= image_tag gamepic.image_url(:thumb) if gamepic.image? %>
+      <div class="name"><%= gamepic.name %></div>
+      <div class="actions">
+        <%= link_to "edit", edit_gamepic_path(gamepic) %> |
+        <%= link_to "remove", gamepic, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>
+
+<p>
+  <%= link_to "Add a gamepic", new_gamepic_path(:gallery_id => @gallery) %> |
+  <%= link_to "Remove Gallery", @gallery, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View Galleries", galleries_path %>
+</p>

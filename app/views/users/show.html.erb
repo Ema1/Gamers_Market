@@ -17,12 +17,11 @@
       </ol>
       <%= will_paginate @microposts %>
     <% end %>
-	<% if @user.gameposts.any? %>
+  	<% if @user.gameposts.any? %>
       <h3>Games (<%= @user.gameposts.count %>)</h3>
       <ol class="gameposts">
         <%= render @gameposts %>
       </ol>
       <%= will_paginate @gameposts %>
     <% end %>
-  </div>
 </div>

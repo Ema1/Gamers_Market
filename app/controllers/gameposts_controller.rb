@@ -1,35 +1,44 @@
 class GamepostsController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user, only: [:index, :create, :destroy]
   before_action :correct_user,   only: :destroy
 
   
   def index
+	@gamepost = current_user.gameposts.build
+    if signed_in?
+	  @gamefeed_items = current_user.gamefeed.paginate(page: params[:page])
+    end
   end
   
   def create
     @gamepost = current_user.gameposts.build(gamepost_params)
     if @gamepost.save
       flash[:success] = "Game Sale created!"
-      redirect_to root_url
+      redirect_to :back
     else
-      @feed_items = []
-      render 'static_pages/home'
+      @gamefeed_items = []
+      redirect_to :back
     end
   end
 
   def destroy
-    @game.destroy
-    redirect_to root_url
+    @gamepost.destroy
+    redirect_to :back
   end
 
+  def gamefeed
+	Gamepost.where("user_id = ?", id)
+  end
+  
   private
 
     def gamepost_params
-      params.require(:game).permit(:content)
+      params.require(:gamepost).permit(:content)
     end
 	    
 	def correct_user
-      @game = current_user.game.find_by(id: params[:id])
-      redirect_to root_url if @game.nil?
-    end
+      @gamepost = current_user.gameposts.find_by(id: params[:id])
+	rescue
+	  redirect_to :back
+	end
 end

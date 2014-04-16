@@ -4,3 +4,20 @@
   </ol>
   <%= will_paginate @gamefeed_items %>
 <% end %>
+
+
+
+<div id="gamepics">
+  <% @gamepost.gamepics.each do |gamepic| %>
+    <div class="gamepic">
+      <%= image_tag gamepic.image_url.to_s %>
+      <div class="name"><%= gamepic.name %></div>
+      <div class="actions">
+        <%= link_to "edit", edit_gamepic_path(gamepic) %> |
+        <%= link_to "remove", gamepic, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>
+

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407235357) do
+ActiveRecord::Schema.define(version: 20140414193428) do
+
+  create_table "galleries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "game", force: true do |t|
     t.string   "content"
@@ -21,6 +27,14 @@ ActiveRecord::Schema.define(version: 20140407235357) do
   end
 
   add_index "game", ["user_id", "created_at"], name: "index_game_on_user_id_and_created_at"
+
+  create_table "gamepics", force: true do |t|
+    t.integer  "gallery_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "gamepic"
+  end
 
   create_table "gameposts", force: true do |t|
     t.string   "content"
@@ -37,6 +51,12 @@ ActiveRecord::Schema.define(version: 20140407235357) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "manuals", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "mancover",   limit: nil
   end
 
   create_table "microposts", force: true do |t|
@@ -73,6 +93,7 @@ ActiveRecord::Schema.define(version: 20140407235357) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
+    t.string   "profilepic"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
