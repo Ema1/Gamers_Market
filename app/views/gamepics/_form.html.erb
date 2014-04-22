@@ -1,5 +1,5 @@
-<%= form_for @gamepic, :html => {:multipart => true} do |f| %>
-  <%= f.error_messages %>
+<%= form_for @gamepic, html: {multipart: true} do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <%= f.hidden_field :gallery_id %>
   <p>
     <%= f.label :name %><br />
@@ -8,9 +8,8 @@
   <p>
     <%= f.file_field :gamepic %>
   </p>
-  <p>
-    <%= f.label :remote_image_url, "or image URL" %><br />
-    <%= f.text_field :remote_image_url %>
-  </p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Save Image", class: "btn btn-primary" %>
 <% end %>
+
+
+

@@ -12,7 +12,7 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    @gallery = Gallery.new(params[:gallery])
+    @gallery = Gallery.new(gallery_params)
     if @gallery.save
       flash[:notice] = "Successfully created gallery."
       redirect_to @gallery
@@ -41,4 +41,11 @@ class GalleriesController < ApplicationController
     flash[:notice] = "Successfully destroyed gallery."
     redirect_to galleries_url
   end
+  
+  private
+  
+    def gallery_params
+      params.require(:gallery).permit(:name, :gallery, :gamepic)
+    end
+
 end

@@ -3,7 +3,7 @@ class Gamepic < ActiveRecord::Base
   mount_uploader :gamepic, GamepicUploader
   
   private 
-    def app_params
-      params.require(:gamepic).permit(:gameid, :gamename, :gamepic, :remote_image_url)
+    def Gamepic_params
+      params.require(:gamepic).permit(:gameid, :gamename, :gamepic)
     end
 end

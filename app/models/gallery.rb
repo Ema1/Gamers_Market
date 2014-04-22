@@ -3,7 +3,7 @@ class Gallery < ActiveRecord::Base
   
   private 
     def gallery_params
-      params.require(:gallery).permit(:name)
+      params.require(:gallery).permit(:name, :gallery, :gamepic)
     end
 
 end
