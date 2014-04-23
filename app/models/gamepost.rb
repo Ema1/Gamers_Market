@@ -1,5 +1,4 @@
 class Gamepost < ActiveRecord::Base
-  has_many :gamepics, dependent: :destroy
   belongs_to :user
   default_scope -> { order('created_at DESC') }
   validates :content, presence: true, length: { maximum: 140 }

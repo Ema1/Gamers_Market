@@ -4,8 +4,8 @@ CarrierWave.configure do |config|
   config.storage = :fog
   config.fog_credentials = {
     :provider               => 'AWS',                        # required
-    :aws_access_key_id      => 'AKIAJSJPUZU34ODOUWTQ',                        # required
-    :aws_secret_access_key  => '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',                        # required
+    :aws_access_key_id      => ENV['S3_ACCESS_KEY'],                        # required
+    :aws_secret_access_key  => ENV['S3_SECRET_KEY'] ,                        # required
     :region                 => 'us-east-1',                  # optional, defaults to 'us-east-1'
   }
   config.fog_directory  = 'gamersmarket'                     # required
