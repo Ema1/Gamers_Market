@@ -1,4 +1,6 @@
 class Gamepost < ActiveRecord::Base
+  has_many :gamepics
+  accepts_nested_attributes_for :gamepics
   belongs_to :user
   default_scope -> { order('created_at DESC') }
   validates :content, presence: true, length: { maximum: 140 }

@@ -1,18 +1,23 @@
 class GamepostsController < ApplicationController
   before_action :signed_in_user, only: [:index, :create, :destroy]
   before_action :correct_user,   only: :destroy
-
   
   def index
 	@gamepost = current_user.gameposts.build
+	@gamepic = @gamepost.gamepics.build
     if signed_in?
 	  @gamefeed_items = current_user.gamefeed.paginate(page: params[:page])
     end
+	@gameposts = Gamepost.all
+	@gamepics = @gamepost.gamepics.all
   end
   
   def create
     @gamepost = current_user.gameposts.build(gamepost_params)
     if @gamepost.save
+      params[:gamepics]['gamepic'].each do |a|
+          @gamepic = @gamepost.gamepics.create!(:gamepic => a, :post_id => @post.id)
+	  end
       flash[:success] = "Game Sale created!"
       redirect_to :back
     else
@@ -20,6 +25,8 @@ class GamepostsController < ApplicationController
       redirect_to :back
     end
   end
+  
+
 
   def destroy
     @gamepost.destroy
@@ -31,9 +38,9 @@ class GamepostsController < ApplicationController
   end
   
   private
-
+  
     def gamepost_params
-      params.require(:gamepost).permit(:content)
+      params.require(:gamepost).permit(:content, gamepics_attributes: [:id, :post_id, :gamepic])
     end
 	    
 	def correct_user

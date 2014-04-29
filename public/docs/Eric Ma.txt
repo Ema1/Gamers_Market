@@ -39,3 +39,34 @@ Eric Ma
   
   - Finished Fixes to heroku, Full site is working
 
+4/01/2014
+
+  - Started Carrierwave and upload process
+  - Revamped game post system
+
+4/08/2014
+  
+  - Continued on Carrierwave
+  - Registered for Amazon S3 
+  - Finished revamping game post system
+
+4/15/2014
+
+  - Implimented game gallery system for testing.
+  - Started on Avatar upload system
+  - Started on follower system
+
+4/22/2014
+
+  -  Troubleshooted gallery
+
+4/23/2014 
+
+  - Finished Avatar upload system
+  - Scrapped Game gallery system
+  
+  
+
+
+
+

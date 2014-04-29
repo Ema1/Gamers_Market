@@ -12,15 +12,11 @@ class UsersController < ApplicationController
 	@user = User.new
   end
   
-  def edit
-    @user = User.find(params[:id])
-  end
-  
   def create
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Games Exchange! start trading your games!"
+      flash[:success] = "Welcome to the Gamers Market! start trading your games!"
       redirect_to @user
     else
       render 'new'
@@ -60,7 +56,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:username, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :avatar)
     end
 
     def correct_user

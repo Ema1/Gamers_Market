@@ -7,11 +7,8 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
-  has_many :avatars
   
-  
-  
-  #mount_uploader :avatar, AvatarUploader 
+  mount_uploader :avatar, AvatarUploader
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   validates :username, presence: true, length: { maximum: 50 }
@@ -21,9 +18,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
- 
-
- 
+  
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
@@ -51,11 +46,11 @@ class User < ActiveRecord::Base
   def gamefeed
 	Gamepost.from_users_followed_by(self)
   end
-  
+
  private
     def create_remember_token
       self.remember_token = User.hash(User.new_remember_token)
     end
-	
+
   
 end

@@ -2,7 +2,9 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <%= gravatar_for @user %>
+      <% if @user.avatar != "" %>
+  		<%= image_tag(@user.avatar, :size => "250x250") %>
+      <% end %>
       <h1><%= @user.username %></h1>
       <span><%= link_to "view my profile", @user %></span>
       <span><b>Microposts:</b> <%= @user.microposts.count %></span>
