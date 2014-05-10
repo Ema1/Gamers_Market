@@ -15,8 +15,8 @@ class GamepostsController < ApplicationController
   def create
     @gamepost = current_user.gameposts.build(gamepost_params)
     if @gamepost.save
-      params[:gamepics]['gamepic'].each do |a|
-          @gamepic = @gamepost.gamepics.create!(:gamepic => a, :post_id => @post.id)
+      params[:gamepics]['gamepic'].each do |g|
+          @gamepic = @gamepost.gamepics.create!(:gamepic => g, :gamepost_id => @gamepost.id)
 	  end
       flash[:success] = "Game Sale created!"
       redirect_to :back
@@ -25,8 +25,6 @@ class GamepostsController < ApplicationController
       redirect_to :back
     end
   end
-  
-
 
   def destroy
     @gamepost.destroy
@@ -40,9 +38,9 @@ class GamepostsController < ApplicationController
   private
   
     def gamepost_params
-      params.require(:gamepost).permit(:content, gamepics_attributes: [:id, :post_id, :gamepic])
+      params.require(:gamepost).permit(:content, gamepics_attributes: [:id, :gamepost_id, :gamepic])
     end
-	    
+		
 	def correct_user
       @gamepost = current_user.gameposts.find_by(id: params[:id])
 	rescue

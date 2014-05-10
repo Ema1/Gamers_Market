@@ -65,6 +65,15 @@ Eric Ma
   - Finished Avatar upload system
   - Scrapped Game gallery system
   
+5/04/2014
+
+  - Finished Game Gallery system, subsystem of gameposts
+
+5/10/2014 
+
+  - Pushed Project to Github, starting to work on feedback updates.
+
+
   
 
 

@@ -3,6 +3,14 @@
       <%= link_to gamefeed_item.user.username, gamefeed_item.user %>
     </span>
     <span class="content"><%= gamefeed_item.content %></span>
+	<br>
+	<% gamefeed_item.gamepics.each do |g| %>
+	  <% if g.gamepic.present? && g.gamepic != "" %>
+		<%= image_tag g.gamepic, :size => "300x200" %>
+		<br>		
+	  <% end %>
+    <% end %>
+	<br>
     <span class="timestamp">
       Posted <%= time_ago_in_words(gamefeed_item.created_at) %> ago.
     </span>
