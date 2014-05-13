@@ -13,21 +13,25 @@
       </section>
     </aside>
 	<div class="span8">
-      <h3>Micropost Feed</h3>
+      <h3>Post Feed</h3>
       <%= render 'shared/feed' %>
     </div>
-  </div>
-
+	<div class="span8">
+		<h3>Twitter Feed</h3>
+		<a class="twitter-timeline"  href="https://twitter.com/Ema1Gamers"  data-widget-id="465662499434418176">Tweets by @Ema1Gamers</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>
+  </div>  
+ 
+  
 <% else %>
 
 <div class="center hero-unit">
 
 <h1>Gamers Market</h1>
-<h2>A place to trade and sell games in the local area</h2>
-
+<h2>A place to trade, sell, and buy games.  You can also upload images, make friends, and make posts about games</h2>
 
  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
 
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 <% end %>

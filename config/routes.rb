@@ -1,10 +1,12 @@
 GamersMarket::Application.routes.draw do
+  get "password_resets/new"
   resources :users do
     member do
       get :following, :followers
     end
   end
   resources :sessions,   only: [:new, :create, :destroy]
+  resources :password_resets
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :gameposts,  only: [:create, :destroy]
@@ -12,7 +14,8 @@ GamersMarket::Application.routes.draw do
   resources :subscriptions
   resources :plans
   resources :charges
-  
+  resources :contacts, only: [:new, :create]
+
   
   root  'static_pages#home'
   
