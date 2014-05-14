@@ -6,7 +6,7 @@
     <%= f.text_area :content, placeholder: "Compose new game sale..." %>
 	<%= f.fields_for :gamepics do |g| %> 
      <div class="field">
-       <%= g.label :Game Pictures %><br> 
+       <%= g.label :Pictures %><br> 
        <%= g.file_field :gamepic, :multiple => true, name: "gamepics[gamepic][]" %> 
      </div>
    <% end %>
